@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
-
 import Lottie from "react-lottie";
-import { Form, Input, Button, DatePicker, TreeSelect, Upload } from "antd";
+import { Form, Input, Button, DatePicker, TreeSelect } from "antd";
 import googleLoading from "./googleLoading.json";
 import moment from "moment";
-// import cycle from "./cycle.json";
 
-// const { Header, Footer, Sider, Content } = Layout;
 const { TextArea } = Input;
 
 export default function Form1() {
@@ -22,37 +18,12 @@ export default function Form1() {
     },
   };
 
-  // const onSubmitForm = async (values) => {
-
-  //   const res = await fetch("/post", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       firstName: values.firstName,
-  //       lastName: values.lastName,
-  //       email: values.email,
-  //       gender: values.gender,
-  //       designation: values.designation,
-  //       phone: values.phone,
-  //       dob: moment(values.dob).format("DD/MM/YYYY"),
-  //       comments: values.comments,
-  //       dataType: "form",
-  //     }),
-  //   });
-  //   // const response = await res.json();
-  //   // if (res.status) {
-  //   //   console.log("Sucess");
-  //   // } else {
-  //   //   console.log("error");
-  //   // }
-  //   // console.log( "data");
-  // };
-
   const onResetValues = () => {
     document.getElementById("myForm").reset();
   };
 
   const onSubmitForm = async (values) => {
-    const response = await axios.post("/post", {
+    const response = await axios.post("/addForm", {
       firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
@@ -62,13 +33,14 @@ export default function Form1() {
       dob: moment(values.dob).format("DD/MM/YYYY"),
       comments: values.comments,
       dataType: "form",
+      createdAt: Date.now(),
     });
+
     if (response.status === 200) {
       alert("Your Response is Saved!!!!!!!!!");
-      onResetValues();
+      // onResetValues();
     } else {
       alert("Data Not Submited");
-      
     }
   };
 
@@ -113,35 +85,47 @@ export default function Form1() {
             treeData={[
               {
                 title: "Front-End-Developer",
-                value: "fed",
+                value: "Front-End-Developer",
               },
               {
                 title: "Back-End-Developer",
-                value: "bed",
+                value: "Back-End-Developer",
+              },
+              {
+                title: "Full-Stack-Developer",
+                value: "Full-Stack-Developer",
+              },
+              {
+                title: "Mobile-Developer",
+                value: "Mobile-Developer",
               },
               {
                 title: "Software Developer",
-                value: "sd",
+                value: "Software-Developer",
               },
               {
                 title: "Junior Software Developer",
-                value: "jsd",
+                value: "Junior-Software-Developer",
+              },
+              {
+                title: "Senior Software Developer",
+                value: "Senior-Software-Developer",
               },
               {
                 title: "Digital Marketing Analyst",
-                value: "dma",
+                value: "Digital-Marketing-Analyst",
               },
               {
                 title: "SEO Specialist",
-                value: "seo",
+                value: "SEO-Specialist",
               },
               {
                 title: "Digital Marketing Analyst",
-                value: "dma",
+                value: "Digital-Marketing-Analyst",
               },
               {
                 title: "Quality Assurance",
-                value: "qa",
+                value: "Quality-Assurance",
               },
             ]}
           />

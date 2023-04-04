@@ -16,17 +16,17 @@ async function savetoDb(dataJson) {
     console.log(`Saved response with ID: ${result.insertedId}`);
   } catch (err) {
     console.error(`Error : ${err}`);
-  } finally {
-    client.close();
   }
 }
+
+app.get("/", (req, res) => {
+  res.send("API is running..");
+});
 
 app.post("/addForm", (req, res) => {
   console.log(req.body, "req.body");
   let dataJson = JSON.parse(JSON.stringify(req.body));
-  dataJson = dataJson["entityData"]
   console.log(dataJson, "dataJson");
-  return
   savetoDb(dataJson);
   res.status(200).json(dataJson);
 });
@@ -53,7 +53,7 @@ async function getData() {
 
 app.get("/getUserDetails", async (req, res) => {
   const users = await getData();
-  res.status(200).json(users);
+  res.status(200).json(users.sort((a, b) => b.createdAt - a.createdAt));
 });
 
 async function getUserById(id) {
@@ -111,6 +111,7 @@ app.delete("/deleteUserDetails/:id", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server Running on Port 3000");
+const PORT = 5000;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
