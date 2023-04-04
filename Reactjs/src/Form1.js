@@ -85,35 +85,47 @@ export default function Form1() {
             treeData={[
               {
                 title: "Front-End-Developer",
-                value: "FrontEndDevloper",
+                value: "Front-End-Developer",
               },
               {
                 title: "Back-End-Developer",
-                value: "BED",
+                value: "Back-End-Developer",
+              },
+              {
+                title: "Full-Stack-Developer",
+                value: "Full-Stack-Developer",
+              },
+              {
+                title: "Mobile-Developer",
+                value: "Mobile-Developer",
               },
               {
                 title: "Software Developer",
-                value: "sd",
+                value: "Software-Developer",
               },
               {
                 title: "Junior Software Developer",
-                value: "jsd",
+                value: "Junior-Software-Developer",
+              },
+              {
+                title: "Senior Software Developer",
+                value: "Senior-Software-Developer",
               },
               {
                 title: "Digital Marketing Analyst",
-                value: "dma",
+                value: "Digital-Marketing-Analyst",
               },
               {
                 title: "SEO Specialist",
-                value: "seo",
+                value: "SEO-Specialist",
               },
               {
                 title: "Digital Marketing Analyst",
-                value: "dma",
+                value: "Digital-Marketing-Analyst",
               },
               {
                 title: "Quality Assurance",
-                value: "qa",
+                value: "Quality-Assurance",
               },
             ]}
           />
