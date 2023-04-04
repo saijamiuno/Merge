@@ -23,6 +23,7 @@ import InputToWishList from "./InputToWishList";
 import WishListToCart from "./WishListToCart";
 import SelectedColor from "./SelectedColor";
 import NoData from "./NoData";
+import UsersTable from "./UsersTable";
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -63,7 +64,7 @@ const App = () => {
     console.log("click ", e);
   };
   const handleSubMenu = (e) => {
-    console.log(e);
+   
     setActive(e.key);
   };
   return (
@@ -111,7 +112,10 @@ const App = () => {
             {active === "g1" ? (
               <Inc />
             ) : active === "g2" ? (
-              <Form1 />
+              <Form1 /> ) : 
+               active === "9" ? (
+                <UsersTable />
+              
             ) : active === "15" ? (
               <Persons />
             ) : active === "7" ? (

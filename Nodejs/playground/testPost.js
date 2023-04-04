@@ -3,6 +3,7 @@ const MongoClient = require("mongodb").MongoClient;
 
 mongoose = require("mongoose");
 const app = express();
+
 app.use(express.json());
 
 async function saveResponseToMongoDB(dataJson) {
@@ -28,6 +29,7 @@ app.post("/post", (req, res) => {
   res.status(200).json(dataJson);
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+const PORT = 8000;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
