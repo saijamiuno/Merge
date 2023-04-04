@@ -44,7 +44,7 @@ const items = [
     getItem(" Input Form & Buttons ", "7"),
   ]),
   getItem("Task 3", "sub4", <SettingOutlined />, [
-    getItem("Array Map", "9"),
+    getItem("Users Table", "9"),
     getItem("Objects of Array", "10"),
     getItem("Input to WishList", "11"),
     getItem("WishList to Cart", "12"),
@@ -58,14 +58,16 @@ const { Header, Footer, Sider, Content } = Layout;
 const { TextArea } = Input;
 
 const App = () => {
-  const [active, setActive] = useState("g1");
+  const [active, setActive] = useState("9");
 
   const onClick = (e) => {
     console.log("click ", e);
   };
   const handleSubMenu = (e) => {
-   
     setActive(e.key);
+  };
+  const addForm = () => {
+    setActive("g2");
   };
   return (
     <Layout>
@@ -112,10 +114,9 @@ const App = () => {
             {active === "g1" ? (
               <Inc />
             ) : active === "g2" ? (
-              <Form1 /> ) : 
-               active === "9" ? (
-                <UsersTable />
-              
+              <Form1 />
+            ) : active === "9" ? (
+              <UsersTable addForm={addForm} />
             ) : active === "15" ? (
               <Persons />
             ) : active === "7" ? (
