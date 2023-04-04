@@ -106,7 +106,7 @@ export default function UsersTable(props) {
               </Row>
             }
           >
-            <EllipsisOutlined style={{ fontSize: "15px" }} />
+            <EllipsisOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
           </Popover>
         );
       },

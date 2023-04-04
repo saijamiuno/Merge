@@ -109,7 +109,7 @@ const App = () => {
             EMPLOYEE BIODATA FORM
           </h3> */}
         </Header>
-        <Content>
+        <Content style={{ minHeight: "90vh" }}>
           <>
             {active === "g1" ? (
               <Inc />
