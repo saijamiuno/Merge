@@ -9,14 +9,11 @@ import {
   FormOutlined,
 } from "@ant-design/icons";
 import { Layout, Input, Menu } from "antd";
-
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Form1 from "./Form1";
 import Persons from "./Persons";
-// import unologo2 from "./images/unologo2.png";
-// import unologosq from "./images/unologosq.png";
 import Inc from "./Inc";
-// import unobanner from "./images/unobanner.jpg";
 import InputButtons from "./InputButtons";
 import ObjectsOfArray from "./ObjectsOfArray";
 import InputToWishList from "./InputToWishList";
@@ -70,34 +67,42 @@ const App = () => {
     setActive("g2");
   };
   return (
-    <Layout>
-      <Sider style={{ color: "red" }}>
-        <img
-          onClick={() => {
-            window.open("https://www.unosimple.com/");
-          }}
-          className="unoicon"
-          // src={unologosq}
-        />
-        {/* <img className="unoban" src={unobanner} /> */}
-
-        <Menu
-          className="sider-menu"
-          onClick={handleSubMenu}
-          style={{
-            width: "15rem",
-          }}
-          // defaultSelectedKeys={["1"]}
-          // defaultOpenKeys={["sub1"]}
-          mode="inline"
-          items={items}
-        />
-      </Sider>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={App} />
+          <Route path="/addUser" element={<Form1 />} />
+          <Route path="/usersTable" element={<UsersTable />} />
+        </Routes>
+      </BrowserRouter>
       <Layout>
-        <Header>
-          {" "}
-          {/* <img className="head--logo" src={unologo2} /> */}
-          {/* <h3
+        <Sider style={{ color: "red" }}>
+          <img
+            onClick={() => {
+              window.open("https://www.unosimple.com/");
+            }}
+            className="unoicon"
+            // src={unologosq}
+          />
+          {/* <img className="unoban" src={unobanner} /> */}
+
+          <Menu
+            className="sider-menu"
+            onClick={handleSubMenu}
+            style={{
+              width: "15rem",
+            }}
+            // defaultSelectedKeys={["1"]}
+            // defaultOpenKeys={["sub1"]}
+            mode="inline"
+            items={items}
+          />
+        </Sider>
+        <Layout>
+          <Header>
+            {" "}
+            {/* <img className="head--logo" src={unologo2} /> */}
+            {/* <h3
             style={{
               fontSize: "20px",
               bottom: "50px",
@@ -108,47 +113,48 @@ const App = () => {
             <b />
             EMPLOYEE BIODATA FORM
           </h3> */}
-        </Header>
-        <Content style={{ minHeight: "90vh" }}>
-          <>
-            {active === "g1" ? (
-              <Inc />
-            ) : active === "g2" ? (
-              <Form1 />
-            ) : active === "9" ? (
-              <UsersTable addForm={addForm} />
-            ) : active === "15" ? (
-              <Persons />
-            ) : active === "7" ? (
-              <InputButtons />
-            ) : active === "10" ? (
-              <ObjectsOfArray />
-            ) : active === "11" ? (
-              <InputToWishList />
-            ) : active === "12" ? (
-              <WishListToCart />
-            ) : active === "14" ? (
-              <SelectedColor />
-            ) : (
-              <NoData />
-            )}
-          </>
-        </Content>
-        <center>
-          <Footer>
-            <center>
-              <LinkedinOutlined
-                style={{ width: "200px", height: "10px", marginLeft: "10px" }}
-                onClick={() => {
-                  window.open("https://in.linkedin.com/company/unosimple");
-                }}
-              />
-            </center>
-            © Copyright 2019 Unovate Simple Technologies Pvt.Ltd.
-          </Footer>
-        </center>
+          </Header>
+          <Content style={{ minHeight: "90vh" }}>
+            <>
+              {active === "g1" ? (
+                <Inc />
+              ) : active === "g2" ? (
+                <Form1 />
+              ) : active === "9" ? (
+                <UsersTable addForm={addForm} />
+              ) : active === "15" ? (
+                <Persons />
+              ) : active === "7" ? (
+                <InputButtons />
+              ) : active === "10" ? (
+                <ObjectsOfArray />
+              ) : active === "11" ? (
+                <InputToWishList />
+              ) : active === "12" ? (
+                <WishListToCart />
+              ) : active === "14" ? (
+                <SelectedColor />
+              ) : (
+                <NoData />
+              )}
+            </>
+          </Content>
+          <center>
+            <Footer>
+              <center>
+                <LinkedinOutlined
+                  style={{ width: "200px", height: "10px", marginLeft: "10px" }}
+                  onClick={() => {
+                    window.open("https://in.linkedin.com/company/unosimple");
+                  }}
+                />
+              </center>
+              © Copyright 2019 Unovate Simple Technologies Pvt.Ltd.
+            </Footer>
+          </center>
+        </Layout>
       </Layout>
-    </Layout>
+    </>
   );
 };
 
