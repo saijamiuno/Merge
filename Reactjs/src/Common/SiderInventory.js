@@ -22,13 +22,8 @@ import {
   DatabaseOutlined,
   DeploymentUnitOutlined,
 } from "@ant-design/icons";
-import "antd/dist/antd.css";
-import logo from "../Images/Logo.png";
-import bulbIcon from "../Images/bulbIcon.jpg";
-import { Link } from "react-router-dom";
+import { Link, Route, BrowserRouter, Routes } from "react-router-dom";
 import SubMenu from "antd/lib/menu/SubMenu";
-import appConfig from "../config/AppConfig";
-import "../Stylesheet/_header.scss";
 const { Sider } = Layout;
 
 export default function SiderInventory({ defaultOpenKeys }) {
@@ -52,7 +47,7 @@ export default function SiderInventory({ defaultOpenKeys }) {
   };
 
   return (
-    <>
+    <>     
       <Sider
         collapsed={collapsed}
         onCollapse={() => collapse()}
@@ -72,11 +67,6 @@ export default function SiderInventory({ defaultOpenKeys }) {
           defaultOpenKeys={["sub1"]}
           style={{ position: "relative", height: "100%" }}
         >
-          {collapsed ? (
-            <img src={bulbIcon} alt="logo " className="siderImgCollapsed" />
-          ) : (
-            <img src={logo} alt="logo " className="sider-img" />
-          )}
           <Menu.Item
             key="1"
             style={{ marginLeft: "-3px" }}
