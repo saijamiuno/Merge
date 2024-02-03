@@ -2,22 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Table, Popover, Row, Col, Button, Popconfirm } from "antd";
 import {
-  ProfileOutlined,
   EllipsisOutlined,
   DeleteOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
 
-import { Link } from "react-router-dom";
-import moment from "moment";
-
-export default function UsersTable() {
+export default function UsersTable(props) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     getUsersData();
   }, []);
-  // console.log(users, "users");
 
   const getUsersData = async () => {
     const { data } = await axios.get("/getUserDetails");
@@ -26,7 +21,7 @@ export default function UsersTable() {
   };
 
   const deleteItem = async (id) => {
-    const { response } = await axios
+    await axios
       .delete(`/deleteUserDetails/${id}`)
       .then((response) => {
         alert("Delete successful");
@@ -39,13 +34,6 @@ export default function UsersTable() {
   };
 
   const colums = [
-    // {
-    //   title: "CREATED DATE",
-    //   dataIndex: "createdAt",
-    //   render: (createdAt, record) => {
-    //     return <div>{moment(createdAt).format("MM/DD/YYYY")}</div>;
-    //   },
-    // },
     {
       title: "First Name",
       dataIndex: "firstName",
@@ -118,7 +106,7 @@ export default function UsersTable() {
               </Row>
             }
           >
-            <EllipsisOutlined style={{ fontSize: "15px" }} />
+            <EllipsisOutlined style={{ fontSize: "25px", cursor: "pointer" }} />
           </Popover>
         );
       },
@@ -135,9 +123,13 @@ export default function UsersTable() {
                 <h1
                   style={{
                     fontSize: "30px",
+                    marginLeft: "10px",
                   }}
                 >
-                  Users ({users.length})
+                  Users{" "}
+                  <span style={{ fontSize: "20px", color: "#fe6101" }}>
+                    ({users.length})
+                  </span>
                 </h1>
               </>
             </div>
@@ -145,23 +137,23 @@ export default function UsersTable() {
 
           <Col span={12}>
             <Row gutter={[16, 16]} justify="end">
-              {/* <Col>
+              <Col>
                 <Button
-                  style={{ height: "38px" }}
-                  className="headerOptionsResume"
+                  style={{
+                    minWidth: "160px",
+                    borderRadius: "6px",
+                    float: "right",
+                    height: "36px",
+                    marginRight: "12px",
+                    marginTop: "22px",
+                    backgroundColor: "#fe6101",
+                    color: "#000",
+                    border: "#fe6101",
+                  }}
                   onClick={() => {
-                    notification.warn({
-                      message: "Work in progress",
-                    });
+                    props && props?.addForm();
                   }}
                 >
-                  <PlusOutlined />
-                  Generate from LA
-                </Button>
-              </Col> */}
-
-              <Col>
-                <Button className="pageButtonTitle" onClick={() => {}}>
                   <PlusOutlined />
                   Add User
                 </Button>
@@ -170,7 +162,7 @@ export default function UsersTable() {
           </Col>
         </Row>
       </Col>
-      <Table dataSource={users} columns={colums} />;
+      <Table dataSource={users} columns={colums} />
     </>
   );
 }
